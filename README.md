@@ -121,6 +121,8 @@ python tools/search_records.py exploration secret
 python tools/search_records.py landmark revisitation --status OBSERVED
 python tools/search_records.py enemy role variant
 python tools/search_records.py boss difficulty --status OBSERVED
+python tools/search_records.py audio lighting feedback
+python tools/search_records.py interface accessibility --status OBSERVED
 ```
 
 Reusable pre-content instruments currently include:
@@ -130,6 +132,7 @@ Reusable pre-content instruments currently include:
 - [`creation/reward-economy-test-matrix.md`](creation/reward-economy-test-matrix.md)
 - [`creation/exploration-discovery-test-matrix.md`](creation/exploration-discovery-test-matrix.md)
 - [`creation/enemy-boss-difficulty-test-matrix.md`](creation/enemy-boss-difficulty-test-matrix.md)
+- [`creation/sensory-feedback-test-matrix.md`](creation/sensory-feedback-test-matrix.md)
 
 ## Initial research order
 
