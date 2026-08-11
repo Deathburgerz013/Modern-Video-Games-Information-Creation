@@ -1,0 +1,16 @@
+{
+  "type": "mechanic", "version": 1, "id": "combat-resource-recovery", "name": "Combat resource recovery", "status": "OBSERVED",
+  "summary": "Needed combat resources are recovered through risky player action, turning scarcity into a positioning decision instead of a passive timeout.",
+  "player_action": "The player approaches, attacks, defeats, or otherwise engages a threat to recover health, ammunition, or ability resources.",
+  "system_response": "Qualified engagement produces a readable resource opportunity at a location and time that changes the encounter state.",
+  "encouraged_behavior": ["controlled aggression", "route planning", "target selection", "resource awareness"],
+  "experience_targets": ["momentum", "risk", "recovery", "agency"],
+  "requirements": ["resource economy", "enemy qualification rules", "pickup or transfer feedback", "anti-stall encounter layout"],
+  "relationships": {"strengthens": ["combat-hit-confirmation"], "weakened_by": ["unreachable drops", "excess supply", "random reward timing"], "conflicts_with": ["dominant long-range safety"]},
+  "failure_modes": ["Recovery requires entering an unwinnable state.", "Drops land outside reachable combat space.", "The safest tactic remains waiting.", "Supply abundance removes target and route decisions."],
+  "production": {"implementation_cost": "MEDIUM", "content_cost": "MEDIUM", "tuning_cost": "HIGH", "required_disciplines": ["combat design", "economy design", "level design", "gameplay programming"]},
+  "accessibility": ["Make resource type and pickup state readable without color alone.", "Permit difficulty tuning without silently changing the rule."],
+  "smallest_playable_test": {"setup": "A bounded arena with two enemy ranges, two resource types, cover, and no passive regeneration.", "measure": ["time spent disengaged", "resource-death loops", "route variety", "recovery attempt success"], "retain_if": "Scarcity produces deliberate aggression and recoverable risk rather than waiting or hopeless collapse.", "revise_if": "The rule works but one enemy, weapon, or route dominates recovery.", "reject_if": "Players cannot infer how to recover or must absorb more unavoidable loss than recovery supplies."},
+  "evidence": [{"kind": "TECHNICAL_ANALYSIS", "source": "https://www.gdcvault.com/play/1024940/Embracing-Push-Forward-Combat-in", "claim": "DOOM's push-forward combat rejects passive cover conventions and makes players take needed resources from adversaries through aggression and speed.", "observed": "2026-08-11", "game_version": "DOOM 2016 development presentation", "notes": "The lecture supports the structural loop; exact drop rules remain game-specific."}],
+  "supersedes": null, "notes": [], "updated": "2026-08-11"
+}

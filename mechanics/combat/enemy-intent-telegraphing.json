@@ -1,0 +1,16 @@
+{
+  "type": "mechanic", "version": 1, "id": "enemy-intent-telegraphing", "name": "Enemy intent telegraphing", "status": "OBSERVED",
+  "summary": "Enemy attacks expose enough state before commitment for the player to form a decision while preserving uncertainty about timing, position, or follow-up.",
+  "player_action": "The player reads posture, motion, sound, space, and prior behavior, then commits to evade, interrupt, block, reposition, or attack.",
+  "system_response": "The enemy advances through finite anticipation, commitment, active, and recovery states with matching collision and presentation.",
+  "encouraged_behavior": ["threat recognition", "positioning", "timed defense", "target prioritization"],
+  "experience_targets": ["fair tension", "learning", "mastery", "readability"],
+  "requirements": ["inspectable enemy state", "attack collision synchronized to presentation", "audio and visual cue ownership"],
+  "relationships": {"strengthens": ["combat-hit-confirmation"], "weakened_by": ["occlusion", "crowd noise", "animation-state mismatch"], "conflicts_with": ["unbounded tracking after commitment"]},
+  "failure_modes": ["Damage starts before the readable commitment.", "The graphic and hit box disagree.", "Multiple threats erase one another's cues.", "Every attack uses the same cue and timing."],
+  "production": {"implementation_cost": "HIGH", "content_cost": "HIGH", "tuning_cost": "HIGH", "required_disciplines": ["AI programming", "animation", "combat design", "sound design", "quality assurance"]},
+  "accessibility": ["Offer redundant audio and visual cues.", "Do not encode threat type only by color.", "Expose scalable cue intensity without changing attack timing."],
+  "smallest_playable_test": {"setup": "Three enemies with melee, projectile, and area attacks in clear space, then the same group with cover and effects.", "measure": ["attack-type recognition", "first-damage surprise", "correct defensive choice", "cue survival under overlap"], "retain_if": "Players learn the attacks and can explain most failures as decisions rather than hidden state.", "revise_if": "Solo attacks read correctly but overlap destroys recognition.", "reject_if": "Damage routinely arrives before a player can identify the committed threat."},
+  "evidence": [{"kind": "OFFICIAL", "source": "https://www.supergiantgames.com/blog/hades-the-nighty-night-update-patch-notes/", "claim": "Hades adjusted enemy attack visuals, hit boxes, summoning-circle scale, sounds, trap visibility, and player-damage occlusion to improve combat clarity.", "observed": "2026-08-11", "game_version": "Hades Nighty Night update", "notes": "Supports coordinated cues and collision, not one universal anticipation duration."}],
+  "supersedes": null, "notes": [], "updated": "2026-08-11"
+}

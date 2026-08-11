@@ -1,0 +1,8 @@
+{
+  "type": "interaction", "version": 1, "id": "telegraph-binds-hit-state", "status": "OBSERVED",
+  "source_ids": ["enemy-intent-telegraphing"], "target_ids": ["combat-hit-confirmation"], "relationship": "REQUIRES",
+  "conditions": ["Enemy attacks have anticipation and active states.", "Collision can damage, block, stagger, or miss.", "Presentation exposes both intent and outcome."],
+  "effect": "The attack's cue, collision window, damage event, and resulting feedback describe one inspectable transition.",
+  "failure_boundary": "The relation fails when the attack appears uncommitted but damages, appears to connect but misses, or produces confirmation for an outcome that did not occur.",
+  "evidence": ["hades-combat-clarity-analysis"], "supersedes": null, "updated": "2026-08-11"
+}

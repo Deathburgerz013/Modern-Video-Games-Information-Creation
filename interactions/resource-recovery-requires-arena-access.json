@@ -1,0 +1,8 @@
+{
+  "type": "interaction", "version": 1, "id": "resource-recovery-requires-arena-access", "status": "OBSERVED",
+  "source_ids": ["combat-resource-recovery"], "target_ids": ["encounter-pressure-release", "movement-feedback-stack"], "relationship": "REQUIRES",
+  "conditions": ["Resources are produced by engaging enemies.", "Collection occurs in active combat space.", "Enemies and geometry can deny routes."],
+  "effect": "Arena routes, movement response, enemy pressure, and drop placement jointly determine whether aggressive recovery remains a decision instead of a trap.",
+  "failure_boundary": "The loop fails when the needed resource appears beyond reachable space, behind unavoidable damage greater than its value, or only after the encounter no longer needs it.",
+  "evidence": ["doom-push-forward-combat-analysis"], "supersedes": null, "updated": "2026-08-11"
+}
