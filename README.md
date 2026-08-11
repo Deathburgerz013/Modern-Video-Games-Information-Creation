@@ -125,6 +125,8 @@ python tools/search_records.py audio lighting feedback
 python tools/search_records.py interface accessibility --status OBSERVED
 python tools/search_records.py death state
 python tools/search_records.py replay variation --status OBSERVED
+python tools/search_records.py environmental narrative
+python tools/search_records.py fragment uncertainty --status OBSERVED
 ```
 
 Reusable pre-content instruments currently include:
@@ -136,6 +138,7 @@ Reusable pre-content instruments currently include:
 - [`creation/enemy-boss-difficulty-test-matrix.md`](creation/enemy-boss-difficulty-test-matrix.md)
 - [`creation/sensory-feedback-test-matrix.md`](creation/sensory-feedback-test-matrix.md)
 - [`creation/death-retry-persistence-test-matrix.md`](creation/death-retry-persistence-test-matrix.md)
+- [`creation/narrative-environmental-storytelling-test-matrix.md`](creation/narrative-environmental-storytelling-test-matrix.md)
 
 ## Initial research order
 
