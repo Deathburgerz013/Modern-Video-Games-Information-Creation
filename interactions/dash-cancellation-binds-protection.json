@@ -1,0 +1,15 @@
+{
+  "type": "interaction",
+  "version": 1,
+  "id": "dash-cancellation-binds-protection",
+  "status": "OBSERVED",
+  "source_ids": ["dash-action-buffering"],
+  "target_ids": ["movement-feedback-stack"],
+  "relationship": "REQUIRES",
+  "conditions": ["Dash can be canceled into an offensive or defensive action.", "Dash changes invulnerability, collision, or damage state.", "Animation and effects expose dash state."],
+  "effect": "Every cancellation must update protection, collision, action priority, animation, and feedback as one transition.",
+  "failure_boundary": "If any attached effect survives the canceled state, the action grammar permits hidden advantages or communicates a false state.",
+  "evidence": ["hades-movement-analysis"],
+  "supersedes": null,
+  "updated": "2026-08-11"
+}

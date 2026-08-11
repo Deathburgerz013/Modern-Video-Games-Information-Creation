@@ -63,6 +63,7 @@ def validate_record(data: object, path: Path) -> list[str]:
 def validate_repository(root: Path = ROOT) -> list[str]:
     errors: list[str] = []
     seen: dict[str, Path] = {}
+    loaded: list[tuple[Path, dict]] = []
     for path in record_paths(root):
         try:
             data = json.loads(path.read_text(encoding="utf-8"))
@@ -71,11 +72,22 @@ def validate_repository(root: Path = ROOT) -> list[str]:
             continue
         errors.extend(validate_record(data, path))
         if isinstance(data, dict) and isinstance(data.get("id"), str):
+            loaded.append((path, data))
             record_id = data["id"]
             if record_id in seen:
                 errors.append(f"{path}: duplicate id {record_id!r}; first seen in {seen[record_id]}")
             else:
                 seen[record_id] = path
+    for path, data in loaded:
+        references: list[str] = []
+        if data.get("type") == "game-analysis":
+            references.extend(data.get("mechanic_ids", []))
+        elif data.get("type") == "interaction":
+            references.extend(data.get("source_ids", []))
+            references.extend(data.get("target_ids", []))
+        for reference in references:
+            if reference not in seen:
+                errors.append(f"{path}: unresolved local record reference {reference!r}")
     return errors
 
 

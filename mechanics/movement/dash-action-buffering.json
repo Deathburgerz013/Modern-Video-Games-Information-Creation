@@ -1,0 +1,60 @@
+{
+  "type": "mechanic",
+  "version": 1,
+  "id": "dash-action-buffering",
+  "name": "Dash and action buffering",
+  "status": "OBSERVED",
+  "summary": "Explicit buffering and cancellation rules let movement and combat form a learnable action grammar instead of competing for ignored inputs.",
+  "player_action": "The player queues an attack, dash, aim, or follow-up while another movement or combat action is ending.",
+  "system_response": "The game accepts, delays, cancels, or rejects the queued action according to visible state and stable priority rules.",
+  "encouraged_behavior": ["combat flow", "planned combos", "defensive reaction", "timing mastery"],
+  "experience_targets": ["fluidity", "agency", "mastery", "combat readability"],
+  "requirements": ["action-state machine", "input history", "explicit cancellation table", "animation and invulnerability event boundaries"],
+  "relationships": {
+    "strengthens": ["input-intent-forgiveness", "movement-feedback-stack"],
+    "weakened_by": ["ambiguous cancel timing", "animation events that drift from gameplay state"],
+    "conflicts_with": ["uninterruptible commitment as the primary combat rule"]
+  },
+  "failure_modes": [
+    "A buffered action executes after the tactical reason for pressing it has passed.",
+    "Different weapons silently change action priority.",
+    "Invulnerability persists after an offensive cancellation.",
+    "Animation suggests a cancel window that gameplay does not accept.",
+    "Unlimited cancellation eliminates meaningful commitment."
+  ],
+  "production": {
+    "implementation_cost": "HIGH",
+    "content_cost": "MEDIUM",
+    "tuning_cost": "HIGH",
+    "required_disciplines": ["combat design", "gameplay programming", "animation", "quality assurance"]
+  },
+  "accessibility": ["Allow longer buffer windows without changing enemy speed where possible.", "Use visual and audio confirmation when an action is queued or unavailable.", "Test button remapping and simultaneous inputs."],
+  "smallest_playable_test": {
+    "setup": "One weapon, one dash, one enemy tell, and a visible action-state timeline; test every ordered pair of movement and combat inputs near transition boundaries.",
+    "measure": ["accepted input timing", "unexpected delayed actions", "dropped inputs", "invulnerability duration", "player prediction accuracy"],
+    "retain_if": "Players can predict the next action and use buffering without accidental late execution or invulnerability leakage.",
+    "revise_if": "Flow improves but particular transition pairs remain inconsistent.",
+    "reject_if": "The rules erase intended commitment or routinely execute tactically obsolete inputs."
+  },
+  "evidence": [
+    {
+      "kind": "OFFICIAL",
+      "source": "https://www.supergiantgames.com/blog/hades-updates/",
+      "claim": "Hades post-launch patch notes explicitly improve attack input buffering to permit dashing between strikes and improve buffering after dash-strikes.",
+      "observed": "2026-08-11",
+      "game_version": "Hades post-launch patch, 2020-10-27",
+      "notes": "Direct developer patch record."
+    },
+    {
+      "kind": "OFFICIAL",
+      "source": "https://www.supergiantgames.com/blog/hades-the-blood-price-update-patch-notes-pt-1/",
+      "claim": "Hades patch notes correct dash invulnerability persisting after canceling into an attack.",
+      "observed": "2026-08-11",
+      "game_version": "Hades Blood Price update",
+      "notes": "Demonstrates that cancellation and protection windows must be verified together."
+    }
+  ],
+  "supersedes": null,
+  "notes": [],
+  "updated": "2026-08-11"
+}

@@ -108,6 +108,13 @@ python -m unittest discover -s tests -v
 
 Validation checks identifiers, evidence states, required fields, referenced local records, duplicate IDs, and undeclared top-level fields.
 
+Search records by any combination of terms:
+
+```bash
+python tools/search_records.py movement responsiveness
+python tools/search_records.py dash --status OBSERVED
+```
+
 ## Initial research order
 
 The library grows by complete, connected slices rather than isolated lists:

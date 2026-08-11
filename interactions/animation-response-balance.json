@@ -1,0 +1,15 @@
+{
+  "type": "interaction",
+  "version": 1,
+  "id": "animation-response-balance",
+  "status": "OBSERVED",
+  "source_ids": ["responsive-animation-decoupling"],
+  "target_ids": ["movement-feedback-stack", "camera-response-shaping"],
+  "relationship": "BALANCES",
+  "conditions": ["Gameplay and presentation states are separately inspectable.", "Animation correction preserves readable direction and commitment.", "Camera response does not amplify visual correction into disorientation."],
+  "effect": "Allows immediate or bounded gameplay response while animation and camera communicate physical energy and intention.",
+  "failure_boundary": "The balance fails when control is delayed for animation, animation lies about gameplay state, or correction artifacts become more visible than the intended motion.",
+  "evidence": ["destiny-first-person-movement-presentation", "https://www.gdcvault.com/play/1021981/Finding-Balance-Realizing-Responsive-High"],
+  "supersedes": null,
+  "updated": "2026-08-11"
+}

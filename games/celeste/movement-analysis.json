@@ -1,0 +1,25 @@
+{
+  "type": "game-analysis",
+  "version": 1,
+  "id": "celeste-movement-analysis",
+  "game": "Celeste",
+  "build": "Post-launch mechanics described by the director in 2020",
+  "platform": "Cross-platform behavior; source does not bind observations to one platform",
+  "status": "OBSERVED",
+  "scope": ["jump timing", "input buffering", "corner collision", "moving-platform momentum"],
+  "observations": [
+    "A jump remains available briefly after the character leaves a ledge.",
+    "A jump input can be retained until a valid landing window.",
+    "Near-corner head collisions can receive bounded positional correction.",
+    "Momentum from a moving platform can be retained for a later jump."
+  ],
+  "inferences": [
+    "The allowances reduce failures where the player's intended decision is legible but execution misses a narrow timing or positioning boundary.",
+    "The movement can remain difficult because challenge geometry and decision sequence are preserved while selected input windows are widened."
+  ],
+  "mechanic_ids": ["input-intent-forgiveness", "collision-shape-forgiveness"],
+  "sources": ["https://www.gamespot.com/articles/celeste-dev-explains-how-they-made-their-game-feel/1100-6474775/"],
+  "limits": ["This record does not contain fresh frame measurements.", "It does not establish ideal timing values for another game.", "Critical reception is not treated as causal proof."],
+  "supersedes": null,
+  "updated": "2026-08-11"
+}
