@@ -127,6 +127,8 @@ python tools/search_records.py death state
 python tools/search_records.py replay variation --status OBSERVED
 python tools/search_records.py environmental narrative
 python tools/search_records.py fragment uncertainty --status OBSERVED
+python tools/search_records.py performance frame
+python tools/search_records.py accessibility release --status OBSERVED
 ```
 
 Reusable pre-content instruments currently include:
@@ -139,6 +141,7 @@ Reusable pre-content instruments currently include:
 - [`creation/sensory-feedback-test-matrix.md`](creation/sensory-feedback-test-matrix.md)
 - [`creation/death-retry-persistence-test-matrix.md`](creation/death-retry-persistence-test-matrix.md)
 - [`creation/narrative-environmental-storytelling-test-matrix.md`](creation/narrative-environmental-storytelling-test-matrix.md)
+- [`creation/production-accessibility-release-test-matrix.md`](creation/production-accessibility-release-test-matrix.md)
 
 ## Initial research order
 
@@ -156,3 +159,5 @@ The library grows by complete, connected slices rather than isolated lists:
 10. Production architecture, performance, accessibility, and release
 
 Each research slice connects mechanics, game analyses, interaction records, and a playable test specification before the library advances to the next production area.
+
+After slice 10, taxonomy expansion stops until the retained records are compiled into a bounded production brief and tested in playable software.
