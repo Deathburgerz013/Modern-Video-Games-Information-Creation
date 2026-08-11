@@ -115,12 +115,15 @@ python tools/search_records.py movement responsiveness
 python tools/search_records.py dash --status OBSERVED
 python tools/search_records.py combat feedback
 python tools/search_records.py resource recovery --status OBSERVED
+python tools/search_records.py reward collection
+python tools/search_records.py currency purpose --status OBSERVED
 ```
 
 Reusable pre-content instruments currently include:
 
 - [`creation/movement-feedback-test-matrix.md`](creation/movement-feedback-test-matrix.md)
 - [`creation/combat-arena-test-matrix.md`](creation/combat-arena-test-matrix.md)
+- [`creation/reward-economy-test-matrix.md`](creation/reward-economy-test-matrix.md)
 
 ## Initial research order
 
