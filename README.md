@@ -131,6 +131,10 @@ python tools/search_records.py performance frame
 python tools/search_records.py accessibility release --status OBSERVED
 ```
 
+Active compiled production brief:
+
+- [`creation/bound-to-die-production-brief.md`](creation/bound-to-die-production-brief.md) — the first bounded game target compiled from the completed research library
+
 Reusable pre-content instruments currently include:
 
 - [`creation/movement-feedback-test-matrix.md`](creation/movement-feedback-test-matrix.md)
