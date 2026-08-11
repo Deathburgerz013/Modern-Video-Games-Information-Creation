@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Bounded Game Analysis",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["type", "version", "id", "game", "build", "platform", "status", "scope", "observations", "inferences", "mechanic_ids", "sources", "updated"],
+  "properties": {
+    "type": {"const": "game-analysis"}, "version": {"const": 1},
+    "id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+    "game": {"type": "string", "minLength": 1}, "build": {"type": "string", "minLength": 1},
+    "platform": {"type": "string", "minLength": 1},
+    "status": {"enum": ["PROVISIONAL", "OBSERVED", "REPRODUCED", "RETAINED", "REJECTED"]},
+    "scope": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "observations": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "inferences": {"type": "array", "items": {"type": "string"}},
+    "mechanic_ids": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "sources": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "limits": {"type": "array", "items": {"type": "string"}},
+    "supersedes": {"type": ["string", "null"]},
+    "updated": {"type": "string", "format": "date"}
+  }
+}

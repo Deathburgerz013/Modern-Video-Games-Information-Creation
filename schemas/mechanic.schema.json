@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Deathburgerz013/Modern-Video-Games-Information-Creation/schemas/mechanic.schema.json",
+  "title": "Game Mechanic Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["type", "version", "id", "name", "status", "summary", "player_action", "system_response", "encouraged_behavior", "experience_targets", "requirements", "relationships", "failure_modes", "production", "accessibility", "smallest_playable_test", "evidence", "updated"],
+  "properties": {
+    "type": {"const": "mechanic"},
+    "version": {"const": 1},
+    "id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+    "name": {"type": "string", "minLength": 1},
+    "status": {"enum": ["PROVISIONAL", "OBSERVED", "REPRODUCED", "RETAINED", "REJECTED"]},
+    "summary": {"type": "string", "minLength": 1},
+    "player_action": {"type": "string", "minLength": 1},
+    "system_response": {"type": "string", "minLength": 1},
+    "encouraged_behavior": {"type": "array", "items": {"type": "string"}, "minItems": 1, "uniqueItems": true},
+    "experience_targets": {"type": "array", "items": {"type": "string"}, "minItems": 1, "uniqueItems": true},
+    "requirements": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "relationships": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["strengthens", "weakened_by", "conflicts_with"],
+      "properties": {
+        "strengthens": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "weakened_by": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "conflicts_with": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}
+      }
+    },
+    "failure_modes": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "production": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["implementation_cost", "content_cost", "tuning_cost", "required_disciplines"],
+      "properties": {
+        "implementation_cost": {"enum": ["LOW", "MEDIUM", "HIGH", "UNKNOWN"]},
+        "content_cost": {"enum": ["LOW", "MEDIUM", "HIGH", "UNKNOWN"]},
+        "tuning_cost": {"enum": ["LOW", "MEDIUM", "HIGH", "UNKNOWN"]},
+        "required_disciplines": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}
+      }
+    },
+    "accessibility": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "smallest_playable_test": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["setup", "measure", "retain_if", "revise_if", "reject_if"],
+      "properties": {
+        "setup": {"type": "string", "minLength": 1},
+        "measure": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+        "retain_if": {"type": "string", "minLength": 1},
+        "revise_if": {"type": "string", "minLength": 1},
+        "reject_if": {"type": "string", "minLength": 1}
+      }
+    },
+    "evidence": {"type": "array", "items": {"$ref": "#/$defs/evidence"}},
+    "supersedes": {"type": ["string", "null"]},
+    "notes": {"type": "array", "items": {"type": "string"}},
+    "updated": {"type": "string", "format": "date"}
+  },
+  "$defs": {
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "source", "claim", "observed"],
+      "properties": {
+        "kind": {"enum": ["DIRECT_PLAY", "OFFICIAL", "TECHNICAL_ANALYSIS", "COMMUNITY_DOCUMENTATION", "SUBJECTIVE_REPORT", "PLAYTEST"]},
+        "source": {"type": "string", "minLength": 1},
+        "claim": {"type": "string", "minLength": 1},
+        "observed": {"type": "string", "format": "date"},
+        "game_version": {"type": ["string", "null"]},
+        "notes": {"type": "string"}
+      }
+    }
+  }
+}

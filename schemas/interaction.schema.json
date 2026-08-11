@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Mechanic Interaction",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["type", "version", "id", "status", "source_ids", "target_ids", "relationship", "conditions", "effect", "failure_boundary", "evidence", "updated"],
+  "properties": {
+    "type": {"const": "interaction"}, "version": {"const": 1},
+    "id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+    "status": {"enum": ["PROVISIONAL", "OBSERVED", "REPRODUCED", "RETAINED", "REJECTED"]},
+    "source_ids": {"type": "array", "items": {"type": "string"}, "minItems": 1, "uniqueItems": true},
+    "target_ids": {"type": "array", "items": {"type": "string"}, "minItems": 1, "uniqueItems": true},
+    "relationship": {"enum": ["REQUIRES", "STRENGTHENS", "WEAKENS", "CONFLICTS", "GATES", "CONVERTS", "BALANCES"]},
+    "conditions": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "effect": {"type": "string", "minLength": 1},
+    "failure_boundary": {"type": "string", "minLength": 1},
+    "evidence": {"type": "array", "items": {"type": "string"}},
+    "supersedes": {"type": ["string", "null"]},
+    "updated": {"type": "string", "format": "date"}
+  }
+}

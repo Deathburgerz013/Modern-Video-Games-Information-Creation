@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Game Playtest Observation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["type", "version", "id", "build_id", "date", "tester_context", "test_goal", "conditions", "events", "outcomes", "interpretations", "decision"],
+  "properties": {
+    "type": {"const": "playtest"}, "version": {"const": 1},
+    "id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+    "build_id": {"type": "string", "minLength": 1}, "date": {"type": "string", "format": "date"},
+    "tester_context": {"type": "string", "minLength": 1}, "test_goal": {"type": "string", "minLength": 1},
+    "conditions": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "events": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "outcomes": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "interpretations": {"type": "array", "items": {"type": "string"}},
+    "decision": {"enum": ["RETAIN", "REVISE", "REJECT", "RETEST", "UNKNOWN"]},
+    "next_test": {"type": ["string", "null"]},
+    "evidence_paths": {"type": "array", "items": {"type": "string"}}
+  }
+}
