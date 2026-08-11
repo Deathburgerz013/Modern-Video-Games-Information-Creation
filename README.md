@@ -119,6 +119,8 @@ python tools/search_records.py reward collection
 python tools/search_records.py currency purpose --status OBSERVED
 python tools/search_records.py exploration secret
 python tools/search_records.py landmark revisitation --status OBSERVED
+python tools/search_records.py enemy role variant
+python tools/search_records.py boss difficulty --status OBSERVED
 ```
 
 Reusable pre-content instruments currently include:
@@ -127,6 +129,7 @@ Reusable pre-content instruments currently include:
 - [`creation/combat-arena-test-matrix.md`](creation/combat-arena-test-matrix.md)
 - [`creation/reward-economy-test-matrix.md`](creation/reward-economy-test-matrix.md)
 - [`creation/exploration-discovery-test-matrix.md`](creation/exploration-discovery-test-matrix.md)
+- [`creation/enemy-boss-difficulty-test-matrix.md`](creation/enemy-boss-difficulty-test-matrix.md)
 
 ## Initial research order
 
