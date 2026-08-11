@@ -1,0 +1,55 @@
+{
+  "type": "mechanic",
+  "version": 1,
+  "id": "input-intent-forgiveness",
+  "name": "Input-intent forgiveness",
+  "status": "OBSERVED",
+  "summary": "Small timing and positioning allowances interpret near-correct input as the action the player plausibly intended.",
+  "player_action": "The player submits an action slightly before or after the strict physical window, or contacts level geometry near a valid edge.",
+  "system_response": "The controller buffers, delays expiration, or applies a small positional correction so the intended action can occur.",
+  "encouraged_behavior": ["experimentation", "rapid retry", "commitment to precise movement"],
+  "experience_targets": ["responsiveness", "fair challenge", "mastery", "trust in controls"],
+  "requirements": ["explicit action buffers", "deterministic collision queries", "telemetry separating assisted and strict actions"],
+  "relationships": {
+    "strengthens": ["collision-shape-forgiveness", "movement-feedback-stack"],
+    "weakened_by": ["unpredictable latency", "inconsistent frame pacing"],
+    "conflicts_with": ["tests whose purpose is exact frame execution"]
+  },
+  "failure_modes": [
+    "A window that is too small remains invisible to ordinary players.",
+    "A window that is too large triggers actions after the player believes they were canceled.",
+    "Different allowances on visually identical surfaces make failures feel arbitrary.",
+    "Assistance without telemetry can hide weak level geometry or input latency."
+  ],
+  "production": {
+    "implementation_cost": "MEDIUM",
+    "content_cost": "LOW",
+    "tuning_cost": "HIGH",
+    "required_disciplines": ["gameplay programming", "level design", "quality assurance", "accessibility"]
+  },
+  "accessibility": [
+    "Expose timing assistance separately from game speed where practical.",
+    "Do not communicate assisted success as lesser success.",
+    "Test keyboard, analog stick, high-latency display, and variable frame-rate conditions."
+  ],
+  "smallest_playable_test": {
+    "setup": "A single obstacle course containing a ledge departure, landing, wall contact, and low ceiling; run strict and assisted controllers against identical geometry.",
+    "measure": ["intended actions accepted", "unintended actions triggered", "deaths attributed to controls", "time to recover after failure"],
+    "retain_if": "Intended actions increase without a meaningful increase in unintended actions or loss of challenge recognition.",
+    "revise_if": "Players succeed more often but cannot predict which inputs will be accepted.",
+    "reject_if": "The allowance frequently performs actions players attempted to cancel or removes the tested skill entirely."
+  },
+  "evidence": [
+    {
+      "kind": "TECHNICAL_ANALYSIS",
+      "source": "https://www.gamespot.com/articles/celeste-dev-explains-how-they-made-their-game-feel/1100-6474775/",
+      "claim": "Celeste uses coyote time, jump buffering, corner correction, and stored lift momentum as deliberate game-feel allowances.",
+      "observed": "2026-08-11",
+      "game_version": "Celeste, post-launch discussion",
+      "notes": "The article reports a public explanation by Celeste director Maddy Thorson and distinguishes several separate allowances."
+    }
+  ],
+  "supersedes": null,
+  "notes": ["Forgiveness preserves intended decisions; it is not a substitute for readable geometry or stable input delivery."],
+  "updated": "2026-08-11"
+}

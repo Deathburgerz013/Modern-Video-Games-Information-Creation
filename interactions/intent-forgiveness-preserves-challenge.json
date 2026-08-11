@@ -1,0 +1,15 @@
+{
+  "type": "interaction",
+  "version": 1,
+  "id": "intent-forgiveness-preserves-challenge",
+  "status": "OBSERVED",
+  "source_ids": ["input-intent-forgiveness", "collision-shape-forgiveness"],
+  "target_ids": ["movement-feedback-stack"],
+  "relationship": "STRENGTHENS",
+  "conditions": ["The intended action is inferable from recent input and state.", "The allowance is bounded and consistent.", "The challenge tests route, timing class, or decision rather than the exact rejected edge case.", "Feedback still reports the action that occurred."],
+  "effect": "Reduces low-information execution failures while preserving the larger movement decision and making control response more trustworthy.",
+  "failure_boundary": "The relationship fails when assistance triggers canceled actions, differs across equivalent geometry, or removes the skill the encounter intends to test.",
+  "evidence": ["celeste-movement-analysis"],
+  "supersedes": null,
+  "updated": "2026-08-11"
+}

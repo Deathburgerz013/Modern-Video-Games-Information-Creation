@@ -1,0 +1,59 @@
+{
+  "type": "mechanic",
+  "version": 1,
+  "id": "responsive-animation-decoupling",
+  "name": "Responsive animation decoupling",
+  "status": "OBSERVED",
+  "summary": "Gameplay intent may update immediately while animation is corrected, blended, or selected to communicate weight without delaying control.",
+  "player_action": "The player starts, stops, reverses, turns, or transitions between locomotion and another action.",
+  "system_response": "Gameplay velocity follows the response target while the presentation layer selects or adjusts motion that remains plausible.",
+  "encouraged_behavior": ["rapid correction", "expressive traversal", "trust in high-fidelity characters"],
+  "experience_targets": ["responsiveness", "physicality", "immersion", "readability"],
+  "requirements": ["separate gameplay and presentation state", "transition coverage", "foot and orientation correction", "animation debug telemetry"],
+  "relationships": {
+    "strengthens": ["movement-feedback-stack", "camera-response-shaping"],
+    "weakened_by": ["long uninterruptible locomotion transitions", "poor frame pacing"],
+    "conflicts_with": ["animation authority that directly delays every gameplay transition"]
+  },
+  "failure_modes": [
+    "Immediate velocity with untreated animation causes foot sliding.",
+    "Long blends preserve beauty while making input feel delayed.",
+    "Frequent pose correction produces jitter or orientation snapping.",
+    "A large animation graph becomes costly and fragile without coverage diagnostics."
+  ],
+  "production": {
+    "implementation_cost": "HIGH",
+    "content_cost": "HIGH",
+    "tuning_cost": "HIGH",
+    "required_disciplines": ["animation", "gameplay programming", "technical animation", "character art", "quality assurance"]
+  },
+  "accessibility": ["Provide camera-motion reduction independent of locomotion response.", "Avoid making animation anticipation the only cue for a state transition.", "Test direction changes with alternate input devices."],
+  "smallest_playable_test": {
+    "setup": "A test arena with repeated start, stop, 180-degree turn, strafe, slope, stair, and attack-transition prompts using three animation response settings.",
+    "measure": ["input-to-velocity latency", "input-to-readable-pose latency", "foot sliding duration", "overshoot corrections", "player-rated weight and control"],
+    "retain_if": "Gameplay reacts within the target latency while animation communicates direction and weight without sustained sliding.",
+    "revise_if": "Control is responsive but players misread current direction, commitment, or available actions.",
+    "reject_if": "Visual correction repeatedly obscures gameplay state or requires delaying core input beyond the declared target."
+  },
+  "evidence": [
+    {
+      "kind": "TECHNICAL_ANALYSIS",
+      "source": "https://www.gdcvault.com/play/1021981/Finding-Balance-Realizing-Responsive-High",
+      "claim": "The Just Cause 3 movement presentation explicitly frames responsive design and momentum-conveying animation as competing requirements and discusses correcting motion to preserve both.",
+      "observed": "2026-08-11",
+      "game_version": "Just Cause 3 development presentation",
+      "notes": "GDC session overview by Avalanche Studios."
+    },
+    {
+      "kind": "TECHNICAL_ANALYSIS",
+      "source": "https://www.gdcvault.com/play/1023280/Motion-Matching-and-The-Road",
+      "claim": "Motion matching can select frames based on current pose and desired future trajectory to retain high-quality motion with comfortable control.",
+      "observed": "2026-08-11",
+      "game_version": "Ubisoft motion-matching presentation",
+      "notes": "Supports one implementation family, not a requirement to use motion matching."
+    }
+  ],
+  "supersedes": null,
+  "notes": ["Responsiveness and weight are separate measurable outputs; neither should be inferred from animation quality alone."],
+  "updated": "2026-08-11"
+}

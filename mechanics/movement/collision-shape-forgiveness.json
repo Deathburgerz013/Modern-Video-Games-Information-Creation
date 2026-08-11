@@ -1,0 +1,51 @@
+{
+  "type": "mechanic",
+  "version": 1,
+  "id": "collision-shape-forgiveness",
+  "name": "Collision-shape forgiveness",
+  "status": "OBSERVED",
+  "summary": "Gameplay collision can use stable, intention-oriented shapes instead of matching every visual pixel or animation pose.",
+  "player_action": "The player moves near corners, narrow openings, ledges, ceilings, and walls while attempting another movement action.",
+  "system_response": "Simplified collision and bounded correction prevent low-information edge contacts from canceling an otherwise valid action.",
+  "encouraged_behavior": ["confident traversal", "route experimentation", "speed without pixel hunting"],
+  "experience_targets": ["clarity", "fairness", "flow", "precision"],
+  "requirements": ["separate visual and gameplay collision", "debug collision rendering", "authored correction limits"],
+  "relationships": {
+    "strengthens": ["input-intent-forgiveness", "responsive-animation-decoupling"],
+    "weakened_by": ["visual silhouettes that imply a different boundary"],
+    "conflicts_with": ["simulation requiring exact physical contours"]
+  },
+  "failure_modes": [
+    "Invisible gaps between visual art and collision make contact appear false.",
+    "Aggressive correction pushes the player into hazards or through intended blockers.",
+    "Per-object exceptions become impossible to reason about.",
+    "Animation-driven hitboxes change locomotion boundaries unpredictably."
+  ],
+  "production": {
+    "implementation_cost": "MEDIUM",
+    "content_cost": "MEDIUM",
+    "tuning_cost": "HIGH",
+    "required_disciplines": ["gameplay programming", "level design", "animation", "quality assurance"]
+  },
+  "accessibility": ["Use redundant edge and hazard silhouettes.", "Test at reduced visual acuity and under camera motion.", "Offer debug captures that show correction events."],
+  "smallest_playable_test": {
+    "setup": "Place one strict rectangular controller and one corrected controller in the same corner, doorway, stair, and low-ceiling course.",
+    "measure": ["snags per traversal", "false pass-throughs", "visible collision disagreement", "completion time variance"],
+    "retain_if": "Snags fall while visible disagreement and false pass-through remain rare and explainable.",
+    "revise_if": "Traversal improves only on some orientations or frame rates.",
+    "reject_if": "Correction creates new hazards, skips, or boundaries that players cannot see."
+  },
+  "evidence": [
+    {
+      "kind": "TECHNICAL_ANALYSIS",
+      "source": "https://www.gamespot.com/articles/celeste-dev-explains-how-they-made-their-game-feel/1100-6474775/",
+      "claim": "Celeste uses corner correction to avoid rejecting near-valid jumps at obstacle corners.",
+      "observed": "2026-08-11",
+      "game_version": "Celeste, post-launch discussion",
+      "notes": "This supports bounded correction, not arbitrary collision removal."
+    }
+  ],
+  "supersedes": null,
+  "notes": [],
+  "updated": "2026-08-11"
+}

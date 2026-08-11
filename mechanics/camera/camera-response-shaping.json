@@ -1,0 +1,60 @@
+{
+  "type": "mechanic",
+  "version": 1,
+  "id": "camera-response-shaping",
+  "name": "Camera response shaping",
+  "status": "OBSERVED",
+  "summary": "Camera deadzones, acceleration, recentering, framing, and optional movement effects translate physical input into perception and aim.",
+  "player_action": "The player aims, turns, changes speed, enters a constrained space, or tracks a target.",
+  "system_response": "The camera applies declared response curves and framing rules while protecting visibility, comfort, and aiming intent.",
+  "encouraged_behavior": ["target tracking", "environment scanning", "speed control", "spatial orientation"],
+  "experience_targets": ["control", "awareness", "comfort", "speed", "immersion"],
+  "requirements": ["device-specific input normalization", "response curve visualization", "collision and occlusion handling", "comfort settings"],
+  "relationships": {
+    "strengthens": ["movement-feedback-stack", "responsive-animation-decoupling"],
+    "weakened_by": ["unstable frame time", "camera collision popping"],
+    "conflicts_with": ["automatic motion that overrides aiming during threats"]
+  },
+  "failure_modes": [
+    "Deadzone masks small intended corrections.",
+    "Acceleration prevents consistent flick or tracking distances.",
+    "Automatic recentering fights deliberate camera placement.",
+    "Camera collision changes framing abruptly.",
+    "Head bob, shake, or field-of-view shifts induce discomfort or obscure aim."
+  ],
+  "production": {
+    "implementation_cost": "HIGH",
+    "content_cost": "LOW",
+    "tuning_cost": "HIGH",
+    "required_disciplines": ["camera design", "gameplay programming", "accessibility", "level design", "quality assurance"]
+  },
+  "accessibility": ["Expose sensitivity, acceleration, deadzone, inversion, recentering, shake, bob, blur, and field-of-view controls when relevant.", "Keep gameplay outcomes stable when comfort effects are disabled.", "Test mouse, multiple controllers, and keyboard-only camera alternatives."],
+  "smallest_playable_test": {
+    "setup": "A target-tracking lane, 90- and 180-degree turns, a narrow corridor, an occluding wall, and a sprint section with live response-curve controls.",
+    "measure": ["target acquisition time", "overshoot", "small-correction success", "camera collision events", "comfort", "orientation loss"],
+    "retain_if": "Players can predict camera displacement, track targets, and preserve orientation without discomfort under supported devices.",
+    "revise_if": "One device class or spatial condition produces systematic overshoot, delay, or discomfort.",
+    "reject_if": "Automatic camera behavior repeatedly overrides player intent or makes required aiming unreliable."
+  },
+  "evidence": [
+    {
+      "kind": "TECHNICAL_ANALYSIS",
+      "source": "https://gdcvault.com/play/1017942/Techniques-for-Building-Aim-Assist",
+      "claim": "Insomniac's Resistance 3 aiming presentation identifies camera acceleration and deadzoning as basic camera movement systems that interact with shooter gameplay and mission structure.",
+      "observed": "2026-08-11",
+      "game_version": "Resistance 3 development presentation",
+      "notes": "GDC session overview by Insomniac Games."
+    },
+    {
+      "kind": "TECHNICAL_ANALYSIS",
+      "source": "https://www.gdcvault.com/play/1022297/The-Art-of-First-Person",
+      "claim": "Destiny's first-person presentation treats camera motion as part of the persistent motion set supporting responsive, physical embodiment.",
+      "observed": "2026-08-11",
+      "game_version": "Destiny development presentation",
+      "notes": "GDC session overview by Bungie."
+    }
+  ],
+  "supersedes": null,
+  "notes": ["Aim assistance is related but is not included as an assumed requirement in this record."],
+  "updated": "2026-08-11"
+}

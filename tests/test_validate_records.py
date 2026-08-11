@@ -46,6 +46,23 @@ class ValidationTests(unittest.TestCase):
             errors = validate_repository(root)
             self.assertTrue(any("duplicate id" in error for error in errors))
 
+    def test_unresolved_game_mechanic_reference_fails(self):
+        analysis = {
+            "type": "game-analysis", "version": 1, "id": "test-analysis",
+            "game": "Test", "build": "1", "platform": "test",
+            "status": "OBSERVED", "scope": ["movement"],
+            "observations": ["Observed."], "inferences": [],
+            "mechanic_ids": ["missing-mechanic"], "sources": ["capture"],
+            "updated": "2026-08-11"
+        }
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            target = root / "games"
+            target.mkdir()
+            (target / "analysis.json").write_text(json.dumps(analysis), encoding="utf-8")
+            errors = validate_repository(root)
+            self.assertTrue(any("unresolved local record reference" in error for error in errors))
+
 
 if __name__ == "__main__":
     unittest.main()

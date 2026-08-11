@@ -1,0 +1,24 @@
+{
+  "type": "game-analysis",
+  "version": 1,
+  "id": "destiny-first-person-movement-presentation",
+  "game": "Destiny",
+  "build": "Development presentation published at GDC 2015",
+  "platform": "First-person presentation principles; no platform-specific measurement",
+  "status": "OBSERVED",
+  "scope": ["first-person animation", "hands", "weapons", "camera motion", "responsiveness", "physicality"],
+  "observations": [
+    "Bungie's presentation identifies arms, weapons, and camera motion as the most persistent first-person motions.",
+    "The declared goal is high visual quality that supports design constraints and feels responsive and physical.",
+    "The source frames animation as support for embodiment rather than an isolated visual layer."
+  ],
+  "inferences": [
+    "A first-person controller that moves correctly can still feel absent if camera, weapon, and body presentation do not describe the same motion.",
+    "Presentation must be evaluated against response and comfort instead of visual fidelity alone."
+  ],
+  "mechanic_ids": ["movement-feedback-stack", "responsive-animation-decoupling", "camera-response-shaping"],
+  "sources": ["https://www.gdcvault.com/play/1022297/The-Art-of-First-Person"],
+  "limits": ["The public overview does not expose every production technique or tuning value.", "Audio and haptic conclusions require separate evidence and testing."],
+  "supersedes": null,
+  "updated": "2026-08-11"
+}

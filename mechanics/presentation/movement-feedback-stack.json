@@ -1,0 +1,60 @@
+{
+  "type": "mechanic",
+  "version": 1,
+  "id": "movement-feedback-stack",
+  "name": "Movement feedback stack",
+  "status": "OBSERVED",
+  "summary": "Movement becomes readable and physical when synchronized visual, animation, camera, audio, environmental, interface, and optional haptic responses describe the same state change.",
+  "player_action": "The player starts, stops, accelerates, lands, slides, dashes, collides, or changes surface.",
+  "system_response": "Multiple feedback channels respond with consistent timing and magnitude while preserving configurable sensory comfort.",
+  "encouraged_behavior": ["movement mastery", "surface awareness", "confident speed", "environmental attention"],
+  "experience_targets": ["physicality", "clarity", "impact", "immersion", "satisfaction"],
+  "requirements": ["authoritative locomotion events", "surface classification", "audio and VFX routing", "camera and haptic intensity controls"],
+  "relationships": {
+    "strengthens": ["responsive-animation-decoupling", "camera-response-shaping", "input-intent-forgiveness"],
+    "weakened_by": ["unsynchronized event timing", "uniform feedback magnitude"],
+    "conflicts_with": ["feedback that hides hazards or aiming state"]
+  },
+  "failure_modes": [
+    "One channel reports a different timing or surface than another.",
+    "Constant maximal shake, particles, or sound removes contrast.",
+    "Feedback begins after control has already changed, making movement feel detached.",
+    "Camera and haptic effects cannot be reduced independently.",
+    "Effects obscure enemies, collision boundaries, or the player's next decision."
+  ],
+  "production": {
+    "implementation_cost": "HIGH",
+    "content_cost": "HIGH",
+    "tuning_cost": "HIGH",
+    "required_disciplines": ["gameplay programming", "animation", "visual effects", "sound design", "camera design", "accessibility", "quality assurance"]
+  },
+  "accessibility": ["Separate camera shake, head bob, motion blur, field-of-view change, haptics, flashes, and audio intensity.", "Provide redundant cues without requiring every channel.", "Preserve gameplay timing when presentation intensity is reduced."],
+  "smallest_playable_test": {
+    "setup": "A room with walk, sprint, stop, turn, jump or dash, landing, collision, and three surface materials; expose individual feedback channels as live toggles.",
+    "measure": ["state recognition without HUD", "input-to-feedback latency", "surface identification", "comfort ratings", "aim or hazard readability"],
+    "retain_if": "Players correctly identify movement state and surface while feedback remains comfortable and does not obscure decisions.",
+    "revise_if": "The full stack feels strong but recognition collapses when one optional sensory channel is disabled.",
+    "reject_if": "Added feedback reduces control accuracy, hides threats, or communicates states that did not occur."
+  },
+  "evidence": [
+    {
+      "kind": "TECHNICAL_ANALYSIS",
+      "source": "https://www.gdcvault.com/play/1022297/The-Art-of-First-Person",
+      "claim": "Bungie's Destiny presentation treats arms, weapon animation, and camera motion as persistent first-person motions that must feel responsive and physical to support immersion.",
+      "observed": "2026-08-11",
+      "game_version": "Destiny development presentation",
+      "notes": "The source directly supports coordinated first-person animation and camera response; audio, surface, and haptic layers remain broader testable extensions."
+    },
+    {
+      "kind": "OFFICIAL",
+      "source": "https://www.supergiantgames.com/blog/hades-the-blood-price-update-patch-notes/",
+      "claim": "Hades patch notes document iterative visual-effect improvements for rewards, armored hits, dashing, menus, and encounters, showing feedback presentation is tuned alongside mechanics.",
+      "observed": "2026-08-11",
+      "game_version": "Hades Blood Price update",
+      "notes": "Supports iteration across several visual feedback classes."
+    }
+  ],
+  "supersedes": null,
+  "notes": [],
+  "updated": "2026-08-11"
+}

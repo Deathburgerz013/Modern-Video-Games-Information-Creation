@@ -1,0 +1,30 @@
+{
+  "type": "game-analysis",
+  "version": 1,
+  "id": "hades-movement-analysis",
+  "game": "Hades",
+  "build": "Official update records through the post-launch patch and Blood Price update",
+  "platform": "Cross-platform patch behavior",
+  "status": "OBSERVED",
+  "scope": ["dash and attack input buffering", "cancellation", "invulnerability", "movement visual effects", "room traversal"],
+  "observations": [
+    "Official patches changed attack buffering so dash could occur between strikes and improved buffering after dash-strikes.",
+    "A patch fixed dash invulnerability that persisted after cancellation into an attack.",
+    "Official updates revised dash-related visual effects, hit effects, reward presentation, and chamber layouts.",
+    "A patch made selected gaps easier to cross reliably and clarified cover in a boss chamber."
+  ],
+  "inferences": [
+    "Movement feel depends on transition rules between locomotion, offense, protection, and animation—not dash speed alone.",
+    "Level geometry and feedback require revision alongside controller timing when movement reliability changes."
+  ],
+  "mechanic_ids": ["dash-action-buffering", "movement-feedback-stack", "collision-shape-forgiveness"],
+  "sources": [
+    "https://www.supergiantgames.com/blog/hades-updates/",
+    "https://www.supergiantgames.com/blog/hades-the-blood-price-update-patch-notes-pt-1/",
+    "https://www.supergiantgames.com/blog/hades-the-nighty-night-update-patch-notes/",
+    "https://www.supergiantgames.com/blog/hades-the-blood-price-update-patch-notes/"
+  ],
+  "limits": ["Patch notes establish changed behavior but do not publish the complete state machine or timing values.", "This record does not claim one cancellation model fits every combat system."],
+  "supersedes": null,
+  "updated": "2026-08-11"
+}
