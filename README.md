@@ -123,6 +123,8 @@ python tools/search_records.py enemy role variant
 python tools/search_records.py boss difficulty --status OBSERVED
 python tools/search_records.py audio lighting feedback
 python tools/search_records.py interface accessibility --status OBSERVED
+python tools/search_records.py death state
+python tools/search_records.py replay variation --status OBSERVED
 ```
 
 Reusable pre-content instruments currently include:
@@ -133,6 +135,7 @@ Reusable pre-content instruments currently include:
 - [`creation/exploration-discovery-test-matrix.md`](creation/exploration-discovery-test-matrix.md)
 - [`creation/enemy-boss-difficulty-test-matrix.md`](creation/enemy-boss-difficulty-test-matrix.md)
 - [`creation/sensory-feedback-test-matrix.md`](creation/sensory-feedback-test-matrix.md)
+- [`creation/death-retry-persistence-test-matrix.md`](creation/death-retry-persistence-test-matrix.md)
 
 ## Initial research order
 
