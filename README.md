@@ -113,7 +113,14 @@ Search records by any combination of terms:
 ```bash
 python tools/search_records.py movement responsiveness
 python tools/search_records.py dash --status OBSERVED
+python tools/search_records.py combat feedback
+python tools/search_records.py resource recovery --status OBSERVED
 ```
+
+Reusable pre-content instruments currently include:
+
+- [`creation/movement-feedback-test-matrix.md`](creation/movement-feedback-test-matrix.md)
+- [`creation/combat-arena-test-matrix.md`](creation/combat-arena-test-matrix.md)
 
 ## Initial research order
 
@@ -130,4 +137,4 @@ The library grows by complete, connected slices rather than isolated lists:
 9. Narrative delivery and environmental storytelling
 10. Production architecture, performance, accessibility, and release
 
-The first real research slice should connect one mechanic, one game analysis, one interaction record, and one playable test specification.
+Each research slice connects mechanics, game analyses, interaction records, and a playable test specification before the library advances to the next production area.

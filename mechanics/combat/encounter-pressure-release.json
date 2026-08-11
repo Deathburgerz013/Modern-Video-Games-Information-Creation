@@ -1,0 +1,16 @@
+{
+  "type": "mechanic", "version": 1, "id": "encounter-pressure-release", "name": "Encounter pressure and release", "status": "OBSERVED",
+  "summary": "Combat intensity becomes legible when threat arrival, spatial pressure, resource demand, and recovery produce contrasting phases instead of uninterrupted maximum load.",
+  "player_action": "The player survives a pressure phase, creates an advantage, recognizes release, and uses it to reposition, recover, or choose the next risk.",
+  "system_response": "The encounter changes composition, spacing, reinforcement timing, or reward state while preserving a readable path from pressure to release.",
+  "encouraged_behavior": ["adaptation", "tempo recognition", "repositioning", "resource planning"],
+  "experience_targets": ["tension", "relief", "pacing", "variety"],
+  "requirements": ["encounter state model", "spawn and composition rules", "arena routes", "completion and release feedback"],
+  "relationships": {"strengthens": ["enemy-intent-telegraphing", "combat-resource-recovery"], "weakened_by": ["constant reinforcement", "uniform composition", "unclear completion"], "conflicts_with": ["permanent safe position"]},
+  "failure_modes": ["Maximum pressure becomes normal and loses meaning.", "Release arrives before the player's decision caused it.", "The encounter continues after appearing complete.", "A single safe loop solves every composition."],
+  "production": {"implementation_cost": "MEDIUM", "content_cost": "HIGH", "tuning_cost": "HIGH", "required_disciplines": ["encounter design", "level design", "AI programming", "audio", "quality assurance"]},
+  "accessibility": ["Expose encounter transitions through multiple channels.", "Allow intensity tuning while preserving phase structure."],
+  "smallest_playable_test": {"setup": "One looped arena with two entrances, cover, a flank route, three enemy roles, two waves, and a recoverable resource decision.", "measure": ["route changes", "pressure recognition", "release recognition", "safe-position duration", "repeat-run strategy"], "retain_if": "Players can identify why pressure rose and how their decisions created a useful release window.", "revise_if": "The phases work once but become mechanically identical on repeat.", "reject_if": "Success depends on waiting in one position or enduring undifferentiated overload."},
+  "evidence": [{"kind": "OFFICIAL", "source": "https://www.supergiantgames.com/blog/hades-the-nighty-night-update-patch-notes/", "claim": "Hades varied chamber timing, enemy composition, room size, attack presentation, and reward feedback together rather than treating encounter pacing as spawn count alone.", "observed": "2026-08-11", "game_version": "Hades Nighty Night update", "notes": "Patch evidence supports coordinated encounter tuning; the pressure-release model remains a testable synthesis."}],
+  "supersedes": null, "notes": [], "updated": "2026-08-11"
+}

@@ -1,0 +1,9 @@
+{
+  "type": "game-analysis", "version": 1, "id": "doom-push-forward-combat-analysis", "game": "DOOM", "build": "2016 design described at GDC 2018", "platform": "System-level design; no platform-specific measurements", "status": "OBSERVED",
+  "scope": ["aggression", "resource recovery", "combat speed", "cover rejection", "enemy engagement"],
+  "observations": ["The official presentation describes a combat model built around brutality, aggression, and speed.", "The design rejects regenerating health, reload, and passive cover as its governing conventions.", "Players take needed resources from adversaries instead of waiting for recovery."],
+  "inferences": ["Resource recovery can convert low state into an attack and route decision.", "The loop requires arena access and enemy availability that make aggression recoverable rather than merely mandatory."],
+  "mechanic_ids": ["combat-resource-recovery", "encounter-pressure-release", "combat-hit-confirmation"],
+  "sources": ["https://www.gdcvault.com/play/1024940/Embracing-Push-Forward-Combat-in"],
+  "limits": ["The public overview does not expose exact economy values or full encounter logic.", "The design is evidence for one coherent combat objective, not a universal requirement for action games."], "supersedes": null, "updated": "2026-08-11"
+}

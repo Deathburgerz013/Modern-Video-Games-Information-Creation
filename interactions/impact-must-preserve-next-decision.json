@@ -1,0 +1,8 @@
+{
+  "type": "interaction", "version": 1, "id": "impact-must-preserve-next-decision", "status": "OBSERVED",
+  "source_ids": ["combat-hit-confirmation"], "target_ids": ["enemy-intent-telegraphing", "camera-response-shaping"], "relationship": "BALANCES",
+  "conditions": ["Several threats can overlap.", "Hit feedback uses camera, visual, audio, or interface intensity.", "The player must act again before feedback fully decays."],
+  "effect": "Impact remains strong enough to identify the result while leaving the next threat, route, and aim state readable.",
+  "failure_boundary": "The balance fails when feedback hides a threat, moves aim beyond the declared camera response, or becomes necessary to infer damage after optional channels are reduced.",
+  "evidence": ["hades-combat-clarity-analysis"], "supersedes": null, "updated": "2026-08-11"
+}

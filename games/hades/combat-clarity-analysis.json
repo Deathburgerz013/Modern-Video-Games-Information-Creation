@@ -1,0 +1,9 @@
+{
+  "type": "game-analysis", "version": 1, "id": "hades-combat-clarity-analysis", "game": "Hades", "build": "Official Nighty Night and related Early Access patch records", "platform": "Cross-platform patch behavior", "status": "OBSERVED",
+  "scope": ["hit effects", "enemy attack readability", "damage visibility", "room composition", "audio feedback"],
+  "observations": ["Official patches differentiated directional, rapid-fire, armored, kill, and player-damage visual effects.", "Enemy graphics, hit boxes, projectile patterns, summoning cues, trap visibility, and chamber selection were revised together.", "Damage-number accumulation and interface relevance were changed to reduce clutter.", "Attack sounds and feedback timing were revised for selected weapons, enemies, hazards, and expiring states."],
+  "inferences": ["Combat readability is an agreement among rules, collision, animation, effects, audio, environment, and interface.", "Adding impact without limiting occlusion can weaken the next decision even when individual hits feel stronger."],
+  "mechanic_ids": ["combat-hit-confirmation", "enemy-intent-telegraphing", "encounter-pressure-release"],
+  "sources": ["https://www.supergiantgames.com/blog/hades-the-nighty-night-update-patch-notes/", "https://www.supergiantgames.com/blog/hades-the-high-speed-update-patch-notes/"],
+  "limits": ["Patch notes show revisions but do not publish full event timing or perception-test results.", "Observed changes do not prove every channel caused the reported improvement."], "supersedes": null, "updated": "2026-08-11"
+}
