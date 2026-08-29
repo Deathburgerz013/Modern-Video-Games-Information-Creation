@@ -7,7 +7,8 @@ This is the first executable boundary for the PC deserted-island survival concep
 - Godot 4.7.1 project identity and launch path;
 - keyboard/mouse third-person movement;
 - honest collision and gravity;
-- a small asset-free island greybox;
+- a continuous functional island greybox with physically separated offshore land;
+- painted-anchor relationships expressed as bounded regional topology;
 - visible day/night progression;
 - build and runtime diagnostics;
 - diagnostic recovery from an out-of-bounds fall;
@@ -26,7 +27,8 @@ This is the first executable boundary for the PC deserted-island survival concep
 
 ## Expected screen
 
-- a capsule player on a greybox island;
+- a capsule player on a continuous sampled-terrain island;
+- readable western high ground, eastern beach/plateau, channel, shoal, and offshore silhouettes;
 - water surrounding the island;
 - rocks and a raised inland landmark;
 - a day/night sun cycle;
@@ -34,6 +36,6 @@ This is the first executable boundary for the PC deserted-island survival concep
 
 Walking below `y = -20` restores the fixed, known-safe shell spawn and reports the recovery in the diagnostic overlay. The fixed target prevents an edge sample from creating a repeated fall/recovery loop. This is a shell guard only. It does not claim swimming, drowning, injury, death, checkpoint, or shoreline behavior.
 
-Generated `.godot/`, export, and build directories are intentionally ignored.
+Generated `.godot/`, export, and build directories are intentionally ignored. The functional regional obligations and current evidence boundary are recorded in `docs/world/ENVIRONMENT_CONVERGENCE.md`.
 
 The painted world anchor and its evidence boundary are recorded in `docs/world/WORLD_ANCHOR.md`. The image is visual identity evidence, not yet a terrain height map or collision source.

@@ -1,8 +1,9 @@
 extends Node3D
 
-const BUILD_ID := "deserted-island-shell-v0.1.0"
+const BUILD_ID := "deserted-island-environment-v0.2.0"
 const DAY_LENGTH_SECONDS := 180.0
 const FALL_RECOVERY_Y := -20.0
+const ENVIRONMENT_LAYOUT := preload("res://scripts/environment_layout.gd")
 
 @onready var player: IslandPlayerController = $Player
 @onready var sun: DirectionalLight3D = $Sun
@@ -19,16 +20,16 @@ var fall_recovery_count: int = 0
 
 
 func _ready() -> void:
+	var environment_layout := ENVIRONMENT_LAYOUT.new()
+	environment_layout.name = "EnvironmentLayout"
+	add_child(environment_layout)
 	shell_spawn_transform = player.global_transform
 	build_label.text = "BUILD  %s" % BUILD_ID
-	boundary_label.text = "BOUNDARY  shell only — no survival systems claimed"
+	boundary_label.text = "BOUNDARY  functional geography — survival systems not yet claimed"
 
 
 func _process(delta: float) -> void:
-	time_of_day_hours = fmod(
-		time_of_day_hours + (24.0 * delta / DAY_LENGTH_SECONDS),
-		24.0
-	)
+	time_of_day_hours = fmod(time_of_day_hours + (24.0 * delta / DAY_LENGTH_SECONDS), 24.0)
 	_update_sun()
 	_update_diagnostics()
 
@@ -42,10 +43,7 @@ func _recover_from_invalid_fall() -> void:
 	fall_recovery_count += 1
 	player.velocity = Vector3.ZERO
 	player.global_transform = shell_spawn_transform
-	boundary_label.text = (
-		"RECOVERY  invalid fall restored to safe shell spawn  count=%d"
-		% fall_recovery_count
-	)
+	boundary_label.text = "RECOVERY  invalid fall restored to safe environment spawn  count=%d" % fall_recovery_count
 
 
 func _update_sun() -> void:
@@ -63,12 +61,5 @@ func _update_diagnostics() -> void:
 	var hour := int(time_of_day_hours)
 	var minute := int((time_of_day_hours - float(hour)) * 60.0)
 	time_label.text = "TIME   Day 1  %02d:%02d" % [hour, minute]
-	position_label.text = "POS    %.2f, %.2f, %.2f" % [
-		player.global_position.x,
-		player.global_position.y,
-		player.global_position.z,
-	]
-	movement_label.text = "MOVE   %.2f m/s  floor=%s" % [
-		player.horizontal_speed(),
-		str(player.is_on_floor()),
-	]
+	position_label.text = "POS    %.2f, %.2f, %.2f" % [player.global_position.x, player.global_position.y, player.global_position.z]
+	movement_label.text = "MOVE   %.2f m/s  floor=%s" % [player.horizontal_speed(), str(player.is_on_floor())]
