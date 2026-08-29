@@ -1,0 +1,154 @@
+[gd_scene load_steps=15 format=3]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_main"]
+[ext_resource type="Script" path="res://scripts/player_controller.gd" id="2_player"]
+
+[sub_resource type="ProceduralSkyMaterial" id="SkyMaterial_main"]
+sky_top_color = Color(0.05, 0.12, 0.22, 1)
+sky_horizon_color = Color(0.55, 0.69, 0.77, 1)
+ground_bottom_color = Color(0.01, 0.02, 0.04, 1)
+ground_horizon_color = Color(0.33, 0.42, 0.45, 1)
+
+[sub_resource type="Sky" id="Sky_main"]
+sky_material = SubResource("SkyMaterial_main")
+
+[sub_resource type="Environment" id="Environment_main"]
+background_mode = 2
+sky = SubResource("Sky_main")
+ambient_light_source = 3
+ambient_light_color = Color(0.55, 0.65, 0.72, 1)
+ambient_light_energy = 0.55
+tonemap_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="Material_ground"]
+albedo_color = Color(0.22, 0.29, 0.18, 1)
+roughness = 0.92
+
+[sub_resource type="BoxMesh" id="Mesh_ground"]
+material = SubResource("Material_ground")
+size = Vector3(52, 2, 52)
+
+[sub_resource type="BoxShape3D" id="Shape_ground"]
+size = Vector3(52, 2, 52)
+
+[sub_resource type="StandardMaterial3D" id="Material_water"]
+transparency = 1
+albedo_color = Color(0.03, 0.26, 0.36, 0.72)
+metallic = 0.1
+roughness = 0.18
+
+[sub_resource type="PlaneMesh" id="Mesh_water"]
+material = SubResource("Material_water")
+size = Vector2(180, 180)
+
+[sub_resource type="CapsuleMesh" id="Mesh_player"]
+radius = 0.45
+height = 1.8
+
+[sub_resource type="CapsuleShape3D" id="Shape_player"]
+radius = 0.45
+height = 1.8
+
+[sub_resource type="StandardMaterial3D" id="Material_rock"]
+albedo_color = Color(0.22, 0.23, 0.24, 1)
+roughness = 0.95
+
+[sub_resource type="BoxMesh" id="Mesh_rock"]
+material = SubResource("Material_rock")
+size = Vector3(4, 3, 5)
+
+[sub_resource type="BoxShape3D" id="Shape_rock"]
+size = Vector3(4, 3, 5)
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_main")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_main")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+rotation_degrees = Vector3(-45, -35, 0)
+shadow_enabled = true
+directional_shadow_max_distance = 80.0
+
+[node name="Water" type="MeshInstance3D" parent="."]
+position = Vector3(0, -0.35, 0)
+mesh = SubResource("Mesh_water")
+
+[node name="Island" type="StaticBody3D" parent="."]
+position = Vector3(0, -1, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="Island"]
+mesh = SubResource("Mesh_ground")
+
+[node name="Collision" type="CollisionShape3D" parent="Island"]
+shape = SubResource("Shape_ground")
+
+[node name="InlandRock" type="StaticBody3D" parent="."]
+position = Vector3(8, 1.5, -9)
+rotation_degrees = Vector3(0, 22, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="InlandRock"]
+mesh = SubResource("Mesh_rock")
+
+[node name="Collision" type="CollisionShape3D" parent="InlandRock"]
+shape = SubResource("Shape_rock")
+
+[node name="ReefRock" type="StaticBody3D" parent="."]
+position = Vector3(-13, 0.8, 13)
+rotation_degrees = Vector3(8, -18, 5)
+
+[node name="Mesh" type="MeshInstance3D" parent="ReefRock"]
+mesh = SubResource("Mesh_rock")
+
+[node name="Collision" type="CollisionShape3D" parent="ReefRock"]
+shape = SubResource("Shape_rock")
+
+[node name="Player" type="CharacterBody3D" parent="."]
+position = Vector3(0, 1.2, 8)
+script = ExtResource("2_player")
+
+[node name="Collision" type="CollisionShape3D" parent="Player"]
+position = Vector3(0, 0.9, 0)
+shape = SubResource("Shape_player")
+
+[node name="Mesh" type="MeshInstance3D" parent="Player"]
+position = Vector3(0, 0.9, 0)
+mesh = SubResource("Mesh_player")
+
+[node name="CameraPivot" type="Node3D" parent="Player"]
+position = Vector3(0, 1.55, 0)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="Player/CameraPivot"]
+spring_length = 5.0
+margin = 0.15
+
+[node name="Camera3D" type="Camera3D" parent="Player/CameraPivot/SpringArm3D"]
+current = true
+fov = 72.0
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Margin" type="MarginContainer" parent="HUD"]
+offset_left = 18.0
+offset_top = 18.0
+offset_right = 520.0
+offset_bottom = 170.0
+
+[node name="Readout" type="VBoxContainer" parent="HUD/Margin"]
+theme_override_constants/separation = 4
+
+[node name="Build" type="Label" parent="HUD/Margin/Readout"]
+text = "BUILD"
+
+[node name="Time" type="Label" parent="HUD/Margin/Readout"]
+text = "TIME"
+
+[node name="Position" type="Label" parent="HUD/Margin/Readout"]
+text = "POS"
+
+[node name="Movement" type="Label" parent="HUD/Margin/Readout"]
+text = "MOVE"
+
+[node name="Boundary" type="Label" parent="HUD/Margin/Readout"]
+text = "BOUNDARY"
