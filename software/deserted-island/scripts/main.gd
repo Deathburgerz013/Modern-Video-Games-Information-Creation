@@ -1,6 +1,6 @@
 extends Node3D
 
-const BUILD_ID := "deserted-island-labor-v0.3.0"
+const BUILD_ID := "deserted-island-placement-v0.4.2"
 const DAY_LENGTH_SECONDS := 180.0
 const FALL_RECOVERY_Y := -20.0
 const ENVIRONMENT_LAYOUT := preload("res://scripts/environment_layout.gd")
